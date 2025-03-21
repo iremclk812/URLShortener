@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener</title>
+    <style>
+        /* Flexbox centering of content vertically and horizontally */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container styling */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Input field styling */
+        input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Button Styling */
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3b82f6;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        /* URL Result styling for highlighting the generated URL */
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            word-break: break-all;
+            color: #10b981;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Short your URL</h1>
+
+    <!-- URL shortening form -->
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="url" name="long_url" placeholder="Paste your long URL here" required>
+        <button type="submit">Shorten</button>
+    </form>
+
+    <!-- Display the shortened URL if available -->
+    {% if short_url %}
+        <div class="result">
+            <p>Your shortened URL is ready:</p>
+            <a href="{{ short_url }}" target="_blank">{{ short_url }}</a>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

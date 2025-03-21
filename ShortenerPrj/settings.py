@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'shortener'
+    'shortener',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
